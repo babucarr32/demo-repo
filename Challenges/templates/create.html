@@ -1,0 +1,124 @@
+
+{% block content %}
+
+
+<html>
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <style>
+        head{
+            font-family: 'consolas';
+        }
+        body{
+            font-family: 'consolas';
+        }
+        .form-control:focus {
+            border-color: #00b300;
+            box-shadow: 0px 1px 1px #00b300 inset, 0px 0px 8px #00b300;
+        }
+        ::placeholder {
+            color: #00b300 !important;
+            opacity: 1;
+        }
+        .darkBg{
+            background: rgba(0, 0, 0, 1);
+        }
+    
+        .greenBg{
+            background: #00b300;
+        }
+    
+        .Myform{
+            margin: auto;
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            margin-top: 20px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+        }
+    
+        .error-message{
+            width: 100%; 
+            height: 40px; 
+            background: rgba(0, 0, 0, 0.5); 
+            text-align: center; 
+            padding-top: 7px;
+        }
+    
+        #form-items{
+            width: 75%;
+            height: 100%;
+        }
+    
+        form{
+            width: 100%;
+        }
+    
+        .form-text{
+            width: 100%;
+            text-align: center;
+        }
+    
+        .text{
+            margin-bottom: -2px;
+            padding-top: 20px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+
+<body class="greenBg">
+    <header class="darkBg text-center p-3">
+        <h1 class="display-3" style="color: #00b300;"><strong>GHackers</strong></h1>
+        <div style="width: 100%; height: 1px; background: red;"></div>
+        <div style="width: 100%; height: 1px; background: white;"></div>
+        <div style="width: 100%; height: 2px; background: blue;"></div>
+        <div style="width: 100%; height: 1px; background: white;"></div>
+        <div style="width: 100%; height: 2px; background: green;"></div>
+        <p class="text-danger"><em><b>Hacking is a gift! </em></b><br> <span style="color: #00b300;">Now show me what you got.</span></p>        
+    </header>
+
+    <div class="Myform darkBg" style="color: #00b300;">
+        <div class="form-text ">
+            <h1 class="display-3 "  style="color: #00b300;"><b><small>Create</small></b></h1>
+
+            {% if error %}
+                <div class="error-message text-danger">
+                    <p>{{ error }}</p>
+                </div>
+            {% endif %}
+
+        </div>
+            <form class="form p-3" method="POST" action="{% url 'create' %}" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="form-text">
+                    <p class="text">Title </p>
+                </div>
+                <div class="form-text">
+                    <input class="form-control" type="text" placeholder="Enter title" name="title" required style="border-style:dashed; border-color: #00b300; border-width: 1px; color: #00b300; background: #000000;">
+                </div>
+                
+                <div class="form-text">
+                    <p class="text">Body </p>
+                </div> 
+                <div class="form-text">
+                    <textarea class="form-control" rows="5" name="description" style="border-style:dashed; border-color: #00b300; border-width: 1px; color: #00b300; background: #000000;"></textarea>
+                </div>
+                <br>
+                <div class="form-text">
+                    <button class="btn btn-lg" style="background: #00b300; color: black;"> Create </button>
+                </div>
+            </form>
+    </div>
+</body>
+</html>
+{% endblock %}

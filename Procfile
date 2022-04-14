@@ -1,1 +1,1 @@
-web: gunicorn GHACKERS.wsgi --log-file -
+web: gunicorn GHACKERS.wsgi

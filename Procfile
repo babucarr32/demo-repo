@@ -1,1 +1,1 @@
-web: gunicorn GHACKERS.wsgi
+web: gunicorn GHackers.wsgi
